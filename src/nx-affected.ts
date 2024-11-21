@@ -3,11 +3,10 @@ import { promisify } from 'node:util';
 
 const execPromise = promisify(exec);
 
-async function runNxShowProjectsAffected(projects?: Set<string>, target?: string): Promise<Set<string>> {
+async function runNxShowProjectsAffected(target: string, projects?: Set<string>): Promise<Set<string>> {
   const projectsFilter = projects ? ` --projects=${Array.from(projects).join(',')}` : '';
-  const targetFilter = target ? ` --with-target=${target}` : '';
+  const nxShowProjectsAffected = `npx nx show projects --affected --json --with-target=${target}` + projectsFilter;
 
-  const nxShowProjectsAffected = 'npx nx show projects --affected --json' + projectsFilter + targetFilter;
   try {
     const { stdout, stderr } = await execPromise(nxShowProjectsAffected);
     if (stderr) {
@@ -22,5 +21,5 @@ async function runNxShowProjectsAffected(projects?: Set<string>, target?: string
 }
 
 export function getAffectedProjectsByTarget(target: string, projects?: Set<string>) {
-  return runNxShowProjectsAffected(projects, target);
+  return runNxShowProjectsAffected(target, projects);
 }
