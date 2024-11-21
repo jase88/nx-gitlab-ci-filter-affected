@@ -1,0 +1,37 @@
+{
+  "name": "nx-gitlab-ci-filter-affected",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "repository": "https://github.com/jase88/nx-gitlab-ci-filter-affected",
+  "homepage": "https://github.com/jase88/nx-gitlab-ci-filter-affected#readme",
+  "keywords": [
+    "gitlab",
+    "nx",
+    "affected"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "nx-gitlab-ci-filter-affected": "./dist/nx-gitlab-ci-filter-affected.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "format": "prettier . --write"
+  },
+  "devDependencies": {
+    "@types/node": "22.9.1",
+    "prettier": "3.3.3",
+    "tsup": "^8.3.5"
+  },
+  "dependencies": {
+    "@zkochan/js-yaml": "0.0.7",
+    "typescript": "5.6.3"
+  }
+}
