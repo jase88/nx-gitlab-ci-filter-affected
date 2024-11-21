@@ -1,6 +1,7 @@
 import { parseArgs } from 'node:util';
 import { existsSync } from 'node:fs';
 import { env } from 'node:process';
+import { resolveFilePath } from './file-utils';
 
 const options = {
   input: {
@@ -31,7 +32,7 @@ export function parseAndValidateArguments(): {
     throw new Error(`You need to provide "--input" as an argument or "NX_GL_PIPELINE_INPUT" as an environment variable!`);
   }
 
-  if (!existsSync(pipelineInput)) {
+  if (!existsSync(resolveFilePath(pipelineInput))) {
     throw new Error(`File "${pipelineInput}" could not be found!`);
   }
 

@@ -1,7 +1,6 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
 import { load, dump } from 'js-yaml';
-import { cwd } from 'node:process';
+import { resolveFilePath } from './file-utils';
 
 interface GitlabJobWithVariables {
   extends?: string[];
@@ -20,7 +19,7 @@ export function isGitlabJobWithVariables(item: GitlabItem): item is GitlabJobWit
 }
 
 export function readGitlabCiPipelineYml(filename: string) {
-  const filePath = resolve(cwd(), filename);
+  const filePath = resolveFilePath(filename);
   const pipelineYmlContent = readFileSync(filePath, 'utf-8');
 
   if (pipelineYmlContent.trim() === '') {
@@ -33,7 +32,7 @@ export function readGitlabCiPipelineYml(filename: string) {
 export function writeGitlabCiPipelineYml(filename: string, content: GitlabCiYml) {
   const pipelineYmlContent = dump(content);
 
-  const filePath = resolve(cwd(), filename);
+  const filePath = resolveFilePath(filename);
   writeFileSync(filePath, pipelineYmlContent);
 }
 
