@@ -20,7 +20,7 @@ One possibility is to write a dynamic pipeline that can then be started by Gitla
 
 The CLI requires an input and output file path relative to the current working directory.
 
-Alternatively you can set the environment variables `NX_GITLAB_CI_FILTER_AFFECTED_INPUT` and `NX_GITLAB_CI_FILTER_AFFECTED_OUTPUT`.
+Alternatively you can set the environment variables `NX_GL_PIPELINE_INPUT` and `NX_GL_PIPELINE_OUTPUT`.
 
 ### Example
 
@@ -28,8 +28,8 @@ Alternatively you can set the environment variables `NX_GITLAB_CI_FILTER_AFFECTE
 calculate-affected:
   image: node:23.2.0-alpine3.20
   variables:
-    NX_GITLAB_CI_FILTER_AFFECTED_INPUT: 'gitlab-ci.all.yml'
-    NX_GITLAB_CI_FILTER_AFFECTED_OUTPUT: 'affected.yml'
+    NX_GL_PIPELINE_INPUT: 'gitlab-ci.all.yml'
+    NX_GL_PIPELINE_OUTPUT: 'affected.yml'
   before_script:
     - |
       NX_HEAD=$CI_COMMIT_SHA
