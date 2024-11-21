@@ -25,7 +25,7 @@ Alternatively you can set the environment variables `NX_GITLAB_CI_FILTER_AFFECTE
 ### Example
 
 ```yaml
-nx-affected:
+calculate-affected:
   image: node:23.2.0-alpine3.20
   variables:
     NX_GITLAB_CI_FILTER_AFFECTED_INPUT: 'gitlab-ci.all.yml'
@@ -37,6 +37,12 @@ nx-affected:
       if [ "$NX_BASE" = "0000000000000000000000000000000000000000" ]; then NX_BASE="origin/$CI_DEFAULT_BRANCH"; fi;
   script:
     - npx nx-gitlab-ci-filter-affected
+  artifacts:
+    paths:
+      - affected.yml
+
+run-affected:
+  needs: [calculate-affected]
   trigger:
     include:
       - local: affected.yml
