@@ -1,5 +1,6 @@
 import { parseArgs } from 'node:util';
 import { existsSync } from 'node:fs';
+import { env } from 'node:process';
 
 const options = {
   input: {
@@ -18,7 +19,7 @@ export function parseAndValidateArguments(): {
   pipelineOutput: string;
   pipelineInput: string;
 } {
-  const { NX_GL_PIPELINE_INPUT, NX_GL_PIPELINE_OUTPUT } = process.env;
+  const { NX_GL_PIPELINE_INPUT, NX_GL_PIPELINE_OUTPUT } = env;
   const {
     values: { input, output },
   } = parseArgs({ options });

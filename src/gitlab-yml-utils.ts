@@ -1,5 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { load, dump } from 'js-yaml';
+import { cwd } from 'node:process';
 
 interface GitlabJobWithVariables {
   extends?: string[];
@@ -18,7 +20,8 @@ export function isGitlabJobWithVariables(item: GitlabItem): item is GitlabJobWit
 }
 
 export function readGitlabCiPipelineYml(filename: string) {
-  const pipelineYmlContent = readFileSync(filename, 'utf-8');
+  const filePath = resolve(cwd(), filename);
+  const pipelineYmlContent = readFileSync(filePath, 'utf-8');
 
   if (pipelineYmlContent.trim() === '') {
     throw new Error(`File "${filename}" is empty!`);
@@ -27,8 +30,10 @@ export function readGitlabCiPipelineYml(filename: string) {
   return load(pipelineYmlContent, { filename }) as GitlabCiYml;
 }
 
-export function writeGitlabCiPipelineYml(filePath: string, content: GitlabCiYml) {
+export function writeGitlabCiPipelineYml(filename: string, content: GitlabCiYml) {
   const pipelineYmlContent = dump(content);
+
+  const filePath = resolve(cwd(), filename);
   writeFileSync(filePath, pipelineYmlContent);
 }
 
