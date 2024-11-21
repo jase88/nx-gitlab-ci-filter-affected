@@ -27,7 +27,7 @@ export function parseAndValidateArguments(): {
   const pipelineOutput = output ?? NX_GL_PIPELINE_OUTPUT;
 
   if (!pipelineInput) {
-    throw new Error(`You need to provide "--${input}" as an argument or "NX_GL_PIPELINE_INPUT" as an environment variable!`);
+    throw new Error(`You need to provide "--input" as an argument or "NX_GL_PIPELINE_INPUT" as an environment variable!`);
   }
 
   if (!existsSync(pipelineInput)) {
@@ -35,7 +35,7 @@ export function parseAndValidateArguments(): {
   }
 
   if (!pipelineOutput) {
-    throw new Error(`You need to provide "--${output}" as an argument or "NX_GL_PIPELINE_OUTPUT" as an environment variable!`);
+    throw new Error(`You need to provide "--output" as an argument or "NX_GL_PIPELINE_OUTPUT" as an environment variable!`);
   }
 
   return { pipelineInput, pipelineOutput };
