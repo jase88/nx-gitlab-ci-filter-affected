@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { getAffectedProjectsByTarget } from './nx-affected';
 import { parseAndValidateArguments } from './parse-and-validate-arguments';
 import {
