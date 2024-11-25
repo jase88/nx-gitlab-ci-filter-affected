@@ -36,6 +36,6 @@
     "typescript": "5.7.2"
   },
   "optionalDependencies": {
-    "nx": "20.1.2"
+    "nx": "20.1.3"
   }
 }
