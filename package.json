@@ -34,8 +34,5 @@
   "dependencies": {
     "@zkochan/js-yaml": "0.0.7",
     "typescript": "5.6.3"
-  },
-  "optionalDependencies": {
-    "nx": "20.1.2"
   }
 }
