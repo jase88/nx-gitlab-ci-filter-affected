@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/js-yaml": "4.0.9",
     "@types/node": "22.13.5",
-    "prettier": "3.5.1",
+    "prettier": "3.5.2",
     "tsup": "8.3.6"
   },
   "dependencies": {
