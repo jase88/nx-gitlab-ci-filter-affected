@@ -33,6 +33,6 @@
   },
   "dependencies": {
     "@zkochan/js-yaml": "0.0.7",
-    "typescript": "5.8.3"
+    "typescript": "5.9.2"
   }
 }
