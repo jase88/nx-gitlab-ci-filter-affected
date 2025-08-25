@@ -32,7 +32,7 @@
     "tsup": "8.5.0"
   },
   "dependencies": {
-    "@zkochan/js-yaml": "0.0.9",
+    "@zkochan/js-yaml": "0.0.10",
     "typescript": "5.9.2"
   }
 }
