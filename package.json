@@ -1,38 +1,38 @@
 {
-  "name": "nx-gitlab-ci-filter-affected",
-  "version": "1.0.5",
-  "description": "nx-gitlab-ci-filter-affected is a CLI tool for nx monorepo users who use Gitlab and want to filter their pipeline jobs dynamically based on nx affected.",
-  "license": "MIT",
-  "repository": "https://github.com/jase88/nx-gitlab-ci-filter-affected",
-  "homepage": "https://github.com/jase88/nx-gitlab-ci-filter-affected#readme",
-  "keywords": [
-    "gitlab",
-    "nx",
-    "affected"
-  ],
-  "type": "module",
-  "engines": {
-    "node": ">=20"
-  },
-  "bin": {
-    "nx-gitlab-ci-filter-affected": "./dist/nx-gitlab-ci-filter-affected.js"
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "format": "prettier . --write"
-  },
-  "devDependencies": {
-    "@types/js-yaml": "4.0.9",
-    "@types/node": "24.3.1",
-    "prettier": "3.6.2",
-    "tsup": "8.5.0"
-  },
-  "dependencies": {
-    "@zkochan/js-yaml": "0.0.10",
-    "typescript": "5.9.2"
-  }
+	"name": "nx-gitlab-ci-filter-affected",
+	"version": "1.0.5",
+	"description": "nx-gitlab-ci-filter-affected is a CLI tool for nx monorepo users who use Gitlab and want to filter their pipeline jobs dynamically based on nx affected.",
+	"license": "MIT",
+	"repository": "https://github.com/jase88/nx-gitlab-ci-filter-affected",
+	"homepage": "https://github.com/jase88/nx-gitlab-ci-filter-affected#readme",
+	"keywords": [
+		"gitlab",
+		"nx",
+		"affected"
+	],
+	"type": "module",
+	"engines": {
+		"node": ">=20"
+	},
+	"bin": {
+		"nx-gitlab-ci-filter-affected": "./dist/nx-gitlab-ci-filter-affected.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"format": "biome format --write"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.4",
+		"@types/js-yaml": "4.0.9",
+		"@types/node": "24.3.1",
+		"tsup": "8.5.0"
+	},
+	"dependencies": {
+		"@zkochan/js-yaml": "0.0.10",
+		"typescript": "5.9.2"
+	}
 }
