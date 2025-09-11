@@ -36,12 +36,22 @@ export function writeGitlabCiPipelineYml(filename: string, content: GitlabCiYml)
 	writeFileSync(filePath, pipelineYmlContent);
 }
 
+function checkInput(input: string) {
+	// Only allow alphanumeric, dash, underscore, and comma
+	if (input && !/^[\w\-\,]+$/.test(input)) {
+		throw new Error(`Invalid input: ${input}`);
+	}
+}
+
 export function getTargetFromJob(job: GitlabJobWithVariables) {
-	return job.variables['NX_GL_TARGET'];
+	const target = job.variables['NX_GL_TARGET'];
+	checkInput(target);
+	return target;
 }
 
 export function getProjectFromJob(job: GitlabJobWithVariables): Set<string> | undefined {
 	const projects = job.variables['NX_GL_PROJECTS'];
+	checkInput(projects);
 
 	if (!projects) {
 		return undefined;
