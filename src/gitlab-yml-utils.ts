@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import { load, dump } from 'js-yaml';
+import { load, dump } from '@zkochan/js-yaml';
 import { resolveFilePath } from './file-utils';
 
 interface GitlabJobWithVariables {
