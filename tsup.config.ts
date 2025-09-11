@@ -8,4 +8,5 @@ export default defineConfig({
 	splitting: false,
 	clean: true,
 	publicDir: false,
+	external: ['js-yaml'],
 });
