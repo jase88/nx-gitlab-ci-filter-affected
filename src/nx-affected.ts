@@ -22,5 +22,5 @@ export async function getAffectedProjectsByTarget(target: string, projects?: Set
 	}
 
 	const projectsAffected = JSON.parse(stdout.toString());
-	return new Set(projectsAffected);
+	return new Set<string>(projectsAffected);
 }
