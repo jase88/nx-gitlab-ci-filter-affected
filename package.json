@@ -1,6 +1,6 @@
 {
 	"name": "nx-gitlab-ci-filter-affected",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "nx-gitlab-ci-filter-affected is a CLI tool for nx monorepo users who use Gitlab and want to filter their pipeline jobs dynamically based on nx affected.",
 	"license": "MIT",
 	"repository": "https://github.com/jase88/nx-gitlab-ci-filter-affected",
