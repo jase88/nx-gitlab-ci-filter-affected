@@ -5,7 +5,7 @@ const execPromise = promisify(exec);
 
 async function runNxShowProjectsAffected(target: string, projects?: Set<string>) {
 	const projectsFilter = projects ? ` --projects=${Array.from(projects).join(',')}` : '';
-	const nxShowProjectsAffected = `npx nx show projects --affected --json --with-target=${target}${projectsFilter}`;
+	const nxShowProjectsAffected = `npx nx show projects -- --affected --json --with-target=${target}${projectsFilter}`;
 
 	try {
 		return execPromise(nxShowProjectsAffected);
