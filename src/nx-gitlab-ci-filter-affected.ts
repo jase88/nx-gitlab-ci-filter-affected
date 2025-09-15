@@ -7,9 +7,9 @@ import {
 	getTargetFromJob,
 	isGitlabJobWithVariables,
 	readGitlabCiPipelineYml,
-	removeUnaffectedJobFromPipeline,
 	writeAffectedProjectsToJobVariables,
 	writeGitlabCiPipelineYml,
+	writeNotAffectedToJobVariables,
 } from './gitlab-yml-utils';
 
 (async () => {
@@ -32,7 +32,7 @@ import {
 		const filteredAffectedProjects = await getAffectedProjectsByTarget(target, projects);
 
 		if (filteredAffectedProjects.size === 0) {
-			removeUnaffectedJobFromPipeline(pipeline, jobName);
+			writeNotAffectedToJobVariables(jobDefinition, jobName);
 		} else {
 			writeAffectedProjectsToJobVariables(jobDefinition, filteredAffectedProjects, jobName);
 		}

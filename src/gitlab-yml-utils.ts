@@ -60,13 +60,14 @@ export function getProjectFromJob(job: GitlabJobWithVariables): Set<string> | un
 	return new Set(projects.split(',').map((projectName) => projectName.trim()));
 }
 
-export function removeUnaffectedJobFromPipeline(pipeline: GitlabCiYml, jobName: string) {
-	console.log(`job "${jobName}" was filtered out, because no affected projects could be found`);
-	delete pipeline[jobName];
+export function writeNotAffectedToJobVariables(job: GitlabJobWithVariables, jobName: string) {
+	console.log(`job "${jobName}" was marked as not affected, because no affected projects could be found`);
+	job.variables['NX_GL_IS_AFFECTED'] = 'false';
 }
 
 export function writeAffectedProjectsToJobVariables(job: GitlabJobWithVariables, affectedProjects: Set<string>, jobName: string) {
 	const affectedProjectNames = Array.from(affectedProjects).join(',');
 	console.log(`writing affected projects "${affectedProjectNames}" for job "${jobName}"`);
 	job.variables['NX_GL_AFFECTED_PROJECTS'] = affectedProjectNames;
+	job.variables['NX_GL_IS_AFFECTED'] = 'true';
 }

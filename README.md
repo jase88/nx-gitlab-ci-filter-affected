@@ -3,10 +3,7 @@
 
 An existing Gitlab pipeline is expected as input. In this pipeline, variables can be used to define whether a job is to be filtered using an nx target or one or more nx projects.
 
-`nx-gitlab-ci-filter-affected` reduces jobs of an existing gitlab pipeline to affected projects detected by `nx`.
-The detected projects are passed to the job as variables, so that this information can be reused within the jobs.
-
-The reduced pipeline is then written to the file system.
+`nx-gitlab-ci-filter-affected` writes to the job variables whether the job is affected or not and which projects are affected. So that this information can be reused within the jobs.
 
 ## Why filtering Gitlab CI jobs by nx affected?
 
@@ -67,7 +64,13 @@ lint:
     # ...
 ```
 
-This job will only be available in the pipeline if there is any project affected by the `lint` target.
+This job afterward receives a variable called `NX_GL_IS_AFFECTED`, so that a rule like
+```yaml
+lint:
+  rules:
+    - if: '$NX_GL_IS_AFFECTED == "true"'
+ ```
+could filter the job if not affected.
 
 
 ### Projects
@@ -82,7 +85,7 @@ build-app1:
     - nx build app1
 ```
 
-This job will only be available in the pipeline if the target `build` for the project `app1` is affected.
+This job will have set `NX_GL_IS_AFFECTED` to `true` in the pipeline if the target `build` for the project `app1` is affected.
 
 ### List of affected projects
 
@@ -102,6 +105,7 @@ lint:
   variables:
     NX_GL_TARGET: 'lint'
     NX_GL_AFFECTED_PROJECTS: 'project1,project2'
+    NX_GL_IS_AFFECTED: 'true'
   script:
     - echo "Building $NX_GL_AFFECTED_PROJECTS"
 ```
