@@ -35,6 +35,7 @@ calculate-affected:
       NX_HEAD=$CI_COMMIT_SHA
       NX_BASE=${CI_MERGE_REQUEST_DIFF_BASE_SHA:-$CI_COMMIT_BEFORE_SHA}
       if [ "$NX_BASE" = "0000000000000000000000000000000000000000" ]; then NX_BASE="origin/$CI_DEFAULT_BRANCH"; fi;
+    - git fetch origin $CI_DEFAULT_BRANCH:$CI_DEFAULT_BRANCH
   script:
     - npx nx-gitlab-ci-filter-affected
   artifacts:
@@ -42,10 +43,13 @@ calculate-affected:
       - affected.yml
 
 run-affected:
-  needs: [calculate-affected]
+  needs:
+    - job: calculate-affected
+      artifacts: true
   trigger:
     include:
-      - local: affected.yml
+      - artifact: affected.yml
+        job: calculate-affected
 ```
 
 ## Configuration of the pipeline
