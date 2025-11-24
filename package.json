@@ -29,7 +29,7 @@
 		"@biomejs/biome": "2.3.4",
 		"@types/js-yaml": "4.0.9",
 		"@types/node": "24.10.0",
-		"tsup": "8.5.0"
+		"tsup": "8.5.1"
 	},
 	"dependencies": {
 		"@zkochan/js-yaml": "0.0.10",
